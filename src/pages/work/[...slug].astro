@@ -44,7 +44,7 @@ const { Content } = await render(entry);
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					{entry.data.img && <img class="hero-image" src={entry.data.img} alt={entry.data.img_alt || ''} />}
 					<div class="content">
 						<Content />
 					</div>
@@ -85,7 +85,7 @@ const { Content } = await render(entry);
 	}
 
 	.content {
-		max-width: 65ch;
+		max-width: 90ch;
 		margin-inline: auto;
 	}
 
@@ -147,4 +147,13 @@ const { Content } = await render(entry);
 			font-size: var(--text-2xl);
 		}
 	}
+
+	.hero img {
+		aspect-ratio: 5 / 4;
+		object-fit: cover;
+		object-position: top;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
 </style>

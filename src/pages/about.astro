@@ -2,20 +2,22 @@
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = ['React', 'JavaScript', 'HTML/CSS', 'Next.js', 'Django', 'Wagtail CMS', 'Python', 'Node.js'];
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+<BaseLayout title="{pageTitle}" description="About Tanza J. Solis Lorem Ipsum">
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
-				title="About"
+				title="About Me"
 				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
 			>
 				<img
 					width="1553"
 					height="873"
 					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
+					alt="Tanza at work installing an exhibition"
 				/>
 			</Hero>
 
@@ -23,36 +25,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I'm a full-stack developer with seven years of experience
+						building and maintaining web platforms for arts institutions.
+						At California College of the Arts, I've been the sole developer
+						responsible for both the public-facing cca.edu website and an internal
+						Portal serving 2,000+ users, working primarily with React,
+						Django/Wagtail, and Google Cloud Platform.
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						Before I learned to code, I was a painter. I studied fine arts at Stanford
+						and continue to maintain an active studio practice alongside my development
+						work. This combination gives me a different perspective on
+						technical problems. I approach technological solutions like creative projects,
+						with attention to craft, composition, and impact.
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						I've led major projects including a React 16 to 19 migration, a modular Wagtail
+						CMS homepage redesign, and the integration of third-party tools like Vev
+						(which earned an SF Design Week award for our DEIB page).
+						I also helped build the 2020 Graduating Students Showcase during a
+						particularly challenging year for arts education.
+					</p>
+					<p>
+						Outside of development, I'm a curator and organizer. I recently curated
+						"Murmurations: Self-Portraits by Artists of Diaspora," a 31-artist exhibition
+						at Sentro Filipino, and I'm involved in workplace advocacy through the
+						CCA Staff Union and SEIU Local 1021. I also maintain a consistent creative practice
+						featuring vivid paintings and mixed media soft sculpture.
+					</p>
+					<p>
+						I'm currently looking for my next role, ideally with a mission-driven organization in the arts,
+						design, or creative technology space where I can continue building tools that
+						support creative communities.
 					</p>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<p>BA in Art Practice with Interdisciplinary Honors in the Arts, Stanford University</p>
+					<p>Full-Stack Web Development Bootcamp, General Assembly and Hack the Hood</p>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<p>Frontend: React, JavaScript, HTML/CSS, Next.js</p>
+					<p>Backend: Django, Wagtail CMS, Python, Node.js</p>
+					<p>Platform: Google Cloud Platform, Git</p>
+					<p>Design: Experience with stakeholder collaboration, design systems, and collaborative solutions</p>
 				</div>
+				<ul>
+					{skills.map((skill) => <li>{skill}</li>)}
+				</ul>
 			</section>
 		</main>
 
@@ -88,6 +113,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 	.content {
 		grid-column: 2 / 4;
+	}
+	
+	.content p {
+		margin-bottom: 12px;
 	}
 
 	.content :global(a) {
