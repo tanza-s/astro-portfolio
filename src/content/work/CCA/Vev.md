@@ -1,9 +1,10 @@
 ---
 title: Vev Research and Integration
+caption: 
 publishDate: 2026-02-04 00:00:00
 img: /assets/work/vev1.png
 img_alt: A snippet from the former DEIB page on CCA.EDU
-description: |
+description: Third-party platform integration that won an SF Design Week award
   Providing infrastructure for innovative design on the fly
 tags:
   - Research
@@ -43,5 +44,5 @@ The following is a full-length screenshot of the DEIB page on .EDU, designed in 
 ![From CCA's DEIB page](/assets/work/DEIBpage.png)
 
 For contrast, here is the same content in our native CMS.
-![From CCA's DEIB page](/assets/work/DEIBpage_cms.png)
+![From CCA's DEIB page](/assets/work/DEIBpage.png)
 
