@@ -1,25 +1,25 @@
 /* Global variables */
 :root {
 	/* Colors */
-	--gray-0: #090b11;
-	--gray-50: #141925;
-	--gray-100: #283044;
-	--gray-200: #3d4663;
-	--gray-300: #505d84;
-	--gray-400: #6474a2;
-	--gray-500: #8490b5;
-	--gray-600: #a3acc8;
-	--gray-700: #c3cadb;
-	--gray-800: #e3e6ee;
-	--gray-900: #f3f4f7;
+	--gray-0: #11090b;
+	--gray-50: #251914;
+	--gray-100: #443028;
+	--gray-200: #63463d;
+	--gray-300: #7a564a;
+	--gray-400: #a27464;
+	--gray-500: #b59084;
+	--gray-600: #c8aca3;
+	--gray-700: #dbcac3;
+	--gray-800: #eee6e3;
+	--gray-900: #f7f4f3;
 	--gray-999-basis: 0, 0%, 100%;
-	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
+	--gray-999_60: hsla(var(--gray-999-basis), 0.6);
 	--gray-999: #ffffff;
 
-	--accent-light: #c561f6;
-	--accent-regular: #7611a6;
-	--accent-dark: #1c0056;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
+	--accent-light: #F9B857;
+	--accent-regular: #ea4d11;
+	--accent-dark: #e43129;
+	--accent-overlay: hsla(335, 92%, 65%, 0.33);
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
@@ -38,7 +38,7 @@
 	);
 	--gradient-accent-orange: linear-gradient(
 		150deg,
-		#ca7879,
+		#ca8779,
 		var(--accent-regular),
 		var(--accent-dark)
 	);
@@ -79,33 +79,36 @@
 
 :root.theme-dark {
 	--gray-0: #ffffff;
-	--gray-50: #f3f4f7;
-	--gray-100: #e3e6ee;
-	--gray-200: #c3cadb;
-	--gray-300: #a3acc8;
-	--gray-400: #8490b5;
-	--gray-500: #6474a2;
-	--gray-600: #505d84;
-	--gray-700: #3d4663;
-	--gray-800: #283044;
-	--gray-900: #141925;
-	--gray-999-basis: 225, 31%, 5%;
-	--gray-999: #090b11;
+	--gray-50: #f7f4f3;
+	--gray-100: #eee6e3;
+	--gray-200: #dbcac3;
+	--gray-300: #c8aca3;
+	--gray-400: #b59084;
+	--gray-500: #a27464;
+	--gray-600: #7a564a;
+	--gray-700: #63463d;
+	--gray-800: #443028;
+	--gray-900: #251914;
+	--gray-999-basis: 11, 31%, 5%;
+	--gray-999: #11090b;
 
-	--accent-light: #1c0056;
-	--accent-regular: #7611a6;
-	--accent-dark: #c561f6;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
-	--accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
-	--accent-text-over: var(--gray-0);
+	--accent-light: #F9B857;
+	--accent-regular: #ea4d11;
+	--accent-link-overlay: rgba(234, 77, 17, 0.5);
+	--accent-link-background: rgba(17, 9, 11, 0.5);
+	--accent-dark: #e43129;
+	--accent-overlay: hsla(335, 92%, 65%, 0.33);
+	--accent-subtle-overlay: var(--accent-overlay);
+	--accent-text-over: var(--gray-999);
+	
 
 	--link-color: var(--accent-dark);
 
-	--gradient-stop-1: #4c11c6;
+	--gradient-stop-1: #F6CA3A;
 	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 81%);
 	--gradient-accent-orange: linear-gradient(
 		150deg,
-		#ca7879,
+		#E35429,
 		var(--accent-regular),
 		var(--accent-light)
 	);
@@ -150,6 +153,23 @@ img {
 
 a {
 	color: var(--link-color);
+}
+
+:root.theme-dark p a,
+:root.theme-dark li:not(nav li) a {
+	background-color: var(--accent-link-background);
+	padding: 0.125rem 0.25rem;
+	border-radius: 0.25rem;
+}
+
+:root.theme-dark p a:hover,
+:root.theme-dark p a:focus,
+:root.theme-dark li:not(nav li) a:hover,
+:root.theme-dark li:not(nav li) a:focus {
+	background-color: var(--accent-link-overlay);
+	color: var(--gray-999);
+	padding: 0.125rem 0.25rem;
+	border-radius: 0.25rem;
 }
 
 h1,
