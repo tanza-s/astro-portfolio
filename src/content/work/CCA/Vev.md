@@ -44,5 +44,5 @@ The following is a full-length screenshot of the DEIB page on .EDU, designed in 
 ![From CCA's DEIB page](/assets/work/DEIBpage.png)
 
 For contrast, here is the same content in our native CMS.
-![From CCA's DEIB page](/assets/work/DEIBpage.png)
+![From CCA's DEIB page](/assets/work/DEIBpage_cms.png)
 
