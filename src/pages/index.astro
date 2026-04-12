@@ -45,9 +45,9 @@ const projects = (await getCollection("work"))
               building digital tools for creative minds
             </p>
             <div class="intro__roles">
-              <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-              <Pill><Icon icon="palette" size="1.33em" /> Artist</Pill>
-              <Pill><Icon icon="sparkle" size="1.33em" /> Curator</Pill>
+              <Pill><Icon file="code-open.svg" size="1.5em" /> Developer</Pill>
+              <Pill><Icon file="palette.svg" size="1.5em" /> Artist</Pill>
+              <Pill><Icon file="sparkle-multi.svg" size="1.5em" /> Curator</Pill>
             </div>
           </div>
         </div>
@@ -60,9 +60,14 @@ const projects = (await getCollection("work"))
       <section class="section--projects">
         <header class="section__header">
           <div class="section__header-content">
-            <span class="section__header-decor">✕</span>
+
+            <span class="section__header-decor">
+              <Icon file="star1.svg" size="1.5em" />
+            </span>
             <h1 class="section__header-title">FEATURED WORK</h1>
-            <span class="section__header-decor">✕</span>
+            <span class="section__header-decor">
+              <Icon file="star2.svg" size="2em" />
+            </span>
           </div>
         </header>
 
@@ -81,7 +86,7 @@ const projects = (await getCollection("work"))
         <div class="section__cta">
           <CallToAction href="/work/">
             See my work
-            <Icon icon="arrow-right" size="1.2em" />
+            <Icon file="arrow3.svg" size="1.2em" />
           </CallToAction>
         </div>
       </section>

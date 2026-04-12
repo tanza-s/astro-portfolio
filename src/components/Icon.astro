@@ -1,16 +1,47 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { iconPaths } from './IconPaths';
+import fs from 'fs';
+import path from 'path';
 
 interface Props {
-	icon: keyof typeof iconPaths;
+	icon?: keyof typeof iconPaths;
+	file?: string;
 	color?: string;
 	gradient?: boolean;
 	size?: string;
 }
 
-const { color = 'currentcolor', gradient, icon, size } = Astro.props;
-const iconPath = iconPaths[icon];
+const { color = 'currentcolor', gradient, icon, file, size } = Astro.props;
+
+let iconPath: string = '';
+let viewBoxOverride: string | null = null;
+let useFileMode = false;
+
+if (file) {
+	// File-based approach: load SVG from public/assets/icons
+	useFileMode = true;
+	try {
+		const filePath = path.join(process.cwd(), 'public', 'assets', 'icons', file);
+		const svgContent = fs.readFileSync(filePath, 'utf-8');
+		// Extract viewBox from original SVG
+		const viewBoxMatch = svgContent.match(/viewBox="([^"]*)"/);
+		if (viewBoxMatch) {
+			viewBoxOverride = viewBoxMatch[1];
+		}
+		// Extract the inner content of the <svg> element
+		const match = svgContent.match(/<svg[^>]*>(.*?)<\/svg>/s);
+		iconPath = match ? match[1] : svgContent;
+	} catch (e) {
+		console.error(`Failed to load icon file: ${file}`, e);
+		iconPath = '<!-- Icon not found -->';
+	}
+} else if (icon) {
+	// Legacy approach: use IconPaths
+	iconPath = iconPaths[icon];
+} else {
+	throw new Error('Icon component requires either "icon" or "file" prop');
+}
 
 const attrs: HTMLAttributes<'svg'> = {};
 if (size) attrs.style = { '--size': size };
@@ -22,13 +53,18 @@ const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString
 	xmlns="http://www.w3.org/2000/svg"
 	width="40"
 	height="40"
-	viewBox="0 0 256 256"
+	viewBox={viewBoxOverride || "0 0 256 256"}
+	preserveAspectRatio="xMidYMid meet"
 	aria-hidden="true"
 	stroke={gradient ? `url(#${gradientId})` : color}
 	fill={gradient ? `url(#${gradientId})` : color}
 	{...attrs}
 >
-	<g set:html={iconPath} />
+	{useFileMode ? (
+		<g set:html={iconPath} />
+	) : (
+		<g set:html={iconPath} />
+	)}
 	{
 		gradient && (
 			<linearGradient
@@ -52,5 +88,10 @@ const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString
 		vertical-align: middle;
 		width: var(--size, 1em);
 		height: var(--size, 1em);
+	}
+
+	svg :global(*) {
+		fill: inherit;
+		stroke: inherit;
 	}
 </style>
