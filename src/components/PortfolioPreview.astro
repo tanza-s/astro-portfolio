@@ -20,15 +20,16 @@ const { data, id } = Astro.props.project;
   </div>
   <div class="card__content">
     <h3 class="card__title">{data.title}</h3>
-    {data.caption && <p class="card__caption">CASE STUDY</p>}
     {data.description && <p class="card__description">{data.description}</p>}
-    {data.tags && data.tags.length > 0 && (
-      <div class="card__tags">
-        {data.tags.map((tag) => (
-          <span class="card__tag">{tag}</span>
-        ))}
-      </div>
-    )}
+    {
+      data.tags && data.tags.length > 0 && (
+        <div class="card__tags">
+          {data.tags.map((tag) => (
+            <span class="card__tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
     <a href={`/work/${id}`} class="card__button">Read Case Study</a>
   </div>
 </article>
@@ -50,6 +51,7 @@ const { data, id } = Astro.props.project;
   }
 
   .card__image-wrapper {
+    position: relative;
     overflow: hidden;
     background: var(--gray-800);
   }
@@ -59,12 +61,30 @@ const { data, id } = Astro.props.project;
     height: 100%;
     object-fit: cover;
     transition: transform var(--theme-transition);
+	filter: saturate(0);
   }
 
   .card:hover .card__image {
     transform: scale(1.05);
+	filter: none;
   }
 
+  .card:hover .card__image-wrapper::after {
+    opacity: 0;
+  }
+
+  .card__image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-regular);
+    mix-blend-mode: multiply;
+    opacity: 1;
+    pointer-events: none;
+  }
   .card__content {
     display: flex;
     flex-direction: column;

@@ -60,7 +60,7 @@ const isCurrentPage = (href: string) => {
 			<div class="socials">
 				{
 					iconLinks.map(({ href, file, label }) => (
-						<a href={href} class="social">
+						<a target="_blank" href={href} class="social">
 							<span class="sr-only">{label}</span>
 							<Icon file={file} />
 						</a>
@@ -85,7 +85,7 @@ const isCurrentPage = (href: string) => {
 			<div class="socials">
 				{
 					iconLinks.map(({ href, file, label }) => (
-						<a href={href} class="social">
+						<a target="_blank" rel="noopener noreferrer" href={href} class="social">
 							<span class="sr-only">{label}</span>
 							<Icon file={file} />
 						</a>
