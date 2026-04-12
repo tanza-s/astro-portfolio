@@ -1,0 +1,38 @@
+// Responsive breakpoint mixin
+// Usage: @include media-lg { ... }
+@mixin media-lg() {
+  @media (min-width: 50em) {
+    @content;
+  }
+}
+
+// Gap utility generator
+// This mixin creates both regular and responsive gap classes
+@mixin generate-gap-utilities() {
+  $gaps: (
+    2: 0.5rem,
+    4: 1rem,
+    8: 2rem,
+    10: 2.5rem,
+    15: 3.75rem,
+    20: 5rem,
+    30: 7.5rem,
+    48: 12rem,
+  );
+
+  // Base gap utilities
+  @each $name, $value in $gaps {
+    .gap-#{$name} {
+      gap: $value;
+    }
+  }
+
+  // Responsive gap utilities
+  @include media-lg() {
+    @each $name, $value in $gaps {
+      .lg\:gap-#{$name} {
+        gap: $value;
+      }
+    }
+  }
+}

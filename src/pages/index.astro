@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import CallToAction from "../components/CallToAction.astro";
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
-import Grid from "../components/Grid.astro";
+import Feed from "../components/Feed.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
 import Pill from "../components/Pill.astro";
@@ -26,18 +26,25 @@ const projects = (await getCollection("work"))
   <div class="stack gap-20 lg:gap-48">
     <div class="wrapper stack gap-8 lg:gap-20">
       <header class="intro">
-        <img
-          class="main-portrait"
-          alt="Tanza smiling as he rests on a toolcart"
-          src="/assets/portrait-cutout.png"
-        />
-        <h1 class="name">Tanza J. Solis</h1>
-        <div class="hero">
-          <div class="info">
-            <p class="tagline">
-              building digital tools for creative communities & cultural institutions
+        <div class="intro__portraits">
+          <img
+            class="intro__portrait-graphite intro__portrait-graphite--left"
+            alt="Tanza is a programmer"
+            src="/assets/website_graphite_left.png"
+          />
+          <img
+            class="intro__portrait-graphite intro__portrait-graphite--right"
+            alt="Tanza is a painter as well"
+            src="/assets/website_graphite_right.png"
+          />
+        </div>
+        <h1 class="intro__name">Tanza J. Solis</h1>
+        <div class="intro__content">
+          <div class="intro__info">
+            <p class="intro__tagline">
+              building digital tools for creative minds
             </p>
-            <div class="roles">
+            <div class="intro__roles">
               <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
               <Pill><Icon icon="palette" size="1.33em" /> Artist</Pill>
               <Pill><Icon icon="sparkle" size="1.33em" /> Curator</Pill>
@@ -50,24 +57,28 @@ const projects = (await getCollection("work"))
     </div>
 
     <main class="wrapper stack gap-20 lg:gap-48">
-      <section class="section with-background with-cta">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>Projects</h3>
+      <section class="section--projects">
+        <header class="section__header">
+          <div class="section__header-content">
+            <span class="section__header-decor">✕</span>
+            <h1 class="section__header-title">FEATURED WORK</h1>
+            <span class="section__header-decor">✕</span>
+          </div>
         </header>
 
-        <div class="gallery">
-          <Grid variant="offset">
+        <div class="section__gallery">
+          <Feed>
             {
               projects.map((project) => (
-                <li>
+                <li class="project-feed__item">
                   <PortfolioPreview project={project} />
                 </li>
               ))
             }
-          </Grid>
+          </Feed>
         </div>
 
-        <div class="cta">
+        <div class="section__cta">
           <CallToAction href="/work/">
             See my work
             <Icon icon="arrow-right" size="1.2em" />
@@ -90,144 +101,188 @@ const projects = (await getCollection("work"))
     margin-bottom: 4rem;
   }
 
-  .hero {
+  .intro__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
   }
 
-  .roles {
+  .intro__roles {
     display: none;
   }
 
-  .hero img {
+  .intro__content img {
     aspect-ratio: 5 / 4;
     object-fit: cover;
     object-position: top;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
+    border: 2px solid var(--gray-700);
+    box-shadow: none;
   }
 
-  img.main-portrait {
+  img.intro__portrait {
     aspect-ratio: unset;
     box-shadow: unset;
-	max-width: 50%;
+    max-width: 50%;
   }
 
-  .name {
-    text-align: center;
+  .intro__portraits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    width: 100%;
+  }
+
+  .intro__portrait-graphite--left{
+    position: relative;
+    left: 0;
+    bottom: 0;
+  }
+
+  .intro__portrait-graphite--right{
+    position: relative;
+    right: 20px;
+    bottom: -45px;
+    width: 100%;
   }
 
   @media (min-width: 50em) {
-    .hero {
+    .intro__portraits {
+      gap: 1.5rem;
+    }
+
+    .intro__portrait-graphite--left{
+      left: 100px;
+      bottom: 10px;
+    }
+
+    .intro__portrait-graphite--right{
+      position: absolute;
+      right: 100px;
+      bottom: -25px;
+      width: 55%;
+    }
+  }
+
+  .intro__name {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-5xl);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    color: var(--gray-0);
+  }
+
+  @media (min-width: 50em) {
+    .intro__content {
       padding-inline: 2.5rem;
       gap: 3.75rem;
     }
 
-    .roles {
+    .intro__roles {
       margin-top: 0.5rem;
       display: flex;
       gap: 0.5rem;
       justify-content: center;
     }
 
-    .hero img {
+    .intro__content img {
       aspect-ratio: 3 / 4;
-      border-radius: 4.5rem;
+      border: 2px solid var(--gray-700);
       object-fit: cover;
+    }
+
+    .intro__name {
+      letter-spacing: -0.035em;
+      line-height: 0.9;
     }
   }
 
-  /* ====================================================== */
+  /* Page Section Styles */
 
-  .section {
+  .section--projects {
     display: grid;
     gap: 2rem;
   }
 
-  .section-header {
+  .section__header {
     justify-self: center;
+    width: 100%;
+    border: 1px solid var(--gray-700);
+    padding: 1.5rem;
+    background-color: transparent;
     text-align: center;
-    max-width: 50ch;
-    font-size: var(--text-md);
-    color: var(--gray-300);
   }
 
-  .section-header h3 {
+  :global(:root.theme-dark) .section__header {
+    background-color: var(--black);
+  }
+
+  .section__header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .section__header-decor {
     font-size: var(--text-2xl);
+    color: var(--gray-0);
+    font-weight: 700;
+  }
+
+  .section__header-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-0);
+    margin: 0;
+    letter-spacing: 0.05em;
   }
 
   @media (min-width: 50em) {
-    .section {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+    .section--projects {
+      grid-template-columns: 1fr;
+      grid-template-areas: "header" "gallery" "cta";
       gap: 5rem;
     }
 
-    .section.with-cta {
-      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
-    }
-
-    .section-header {
+    .section__header {
       grid-area: header;
-      font-size: var(--text-lg);
+      padding: 2rem;
     }
 
-    .section-header h3 {
+    .section__header-title {
       font-size: var(--text-4xl);
     }
 
-    .with-cta .section-header {
-      justify-self: flex-start;
-      text-align: left;
-    }
-
-    .gallery {
+    .section__gallery {
       grid-area: gallery;
     }
 
-    .cta {
+    .section__cta {
       grid-area: cta;
     }
   }
 
-  .hero {
+  .intro__content {
     font-size: var(--text-lg);
     text-align: center;
   }
 
-  .title,
-  .tagline {
+  .intro__tagline {
     max-width: 37ch;
     margin-inline: auto;
   }
 
-  .tagline {
-	margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: var(--text-3xl);
-    color: var(--gray-0);
+  .intro__tagline {
+    margin-bottom: 2rem;
   }
 
   @media (min-width: 50em) {
-    .hero {
+    .intro__content {
       font-size: var(--text-xl);
-    }
-
-    .start {
-      text-align: start;
-    }
-
-    .start .title,
-    .start .tagline {
-      margin-inline: unset;
-    }
-
-    .title {
-      font-size: var(--text-5xl);
     }
   }
 </style>

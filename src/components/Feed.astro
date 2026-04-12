@@ -1,0 +1,11 @@
+---
+interface Props {
+	variant?: 'offset' | 'small';
+}
+
+const { variant } = Astro.props;
+---
+
+<ul class="project-feed">
+	<slot />
+</ul>

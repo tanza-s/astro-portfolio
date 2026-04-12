@@ -23,11 +23,10 @@ import Icon from './Icon.astro';
 
 <style>
 	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
+		border: 1px solid var(--gray-700);
 		padding: 1.5rem;
-		background-color: var(--gray-999_60);
-		box-shadow: var(--shadow-sm);
+		background-color: transparent;
+		box-shadow: none;
 	}
 
 	.skills {
@@ -44,9 +43,12 @@ import Icon from './Icon.astro';
 		color: var(--gray-300);
 	}
 
+	:global(:root.theme-dark) .box {
+		background-color: var(--black);
+	}
+
 	@media (min-width: 50em) {
 		.box {
-			border-radius: 1.5rem;
 			padding: 2.5rem;
 		}
 

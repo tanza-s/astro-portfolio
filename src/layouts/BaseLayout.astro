@@ -37,8 +37,15 @@ const { title, description } = Astro.props;
 				isolation: isolate;
 				background:
 					/*noise*/
-					url('/assets/backgrounds/noise.png') top center/220px repeat,
+					url('/assets/backgrounds/pattern.png') top center/220px repeat,
 					/*base*/ var(--gray-999);
+			}
+
+			:global(:root.theme-dark) .backgrounds {
+				background:
+					/*noise*/
+					url('/assets/backgrounds/pattern.png') top center/220px repeat,
+					/*base*/ var(--black);
 			}
 
 			@media (forced-colors: active) {

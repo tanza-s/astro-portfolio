@@ -1,0 +1,13 @@
+.project-feed {
+    list-style: none;
+    padding-left: 0;
+    
+    &__item {
+        position: relative;
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

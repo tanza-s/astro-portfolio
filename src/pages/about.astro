@@ -20,9 +20,9 @@ const skills = ['React', 'JavaScript', 'HTML/CSS', 'Next.js', 'Django', 'Wagtail
 				/>
 			</Hero>
 
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
+			<section class="about-section">
+				<h2 class="about-section__title">Background</h2>
+				<div class="about-section__content">
 					<p>
 						I'm a full-stack developer with seven years of experience
 						building and maintaining web platforms for arts institutions.
@@ -59,24 +59,21 @@ const skills = ['React', 'JavaScript', 'HTML/CSS', 'Next.js', 'Django', 'Wagtail
 					</p>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
+			<section class="about-section">
+				<h2 class="about-section__title">Education</h2>
+				<div class="about-section__content">
 					<p>BA in Art Practice with Interdisciplinary Honors in the Arts, Stanford University</p>
 					<p>Full-Stack Web Development Bootcamp, General Assembly and Hack the Hood</p>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
+			<section class="about-section">
+				<h2 class="about-section__title">Skills</h2>
+				<div class="about-section__content">
 					<p>Frontend: React, JavaScript, HTML/CSS, Next.js</p>
 					<p>Backend: Django, Wagtail CMS, Python, Node.js</p>
 					<p>Platform: Google Cloud Platform, Git</p>
 					<p>Design: Experience with stakeholder collaboration, design systems, and collaborative solutions</p>
 				</div>
-				<!-- <ul>
-					{skills.map((skill) => <li>{skill}</li>)}
-				</ul> -->
 			</section>
 		</main>
 
@@ -95,35 +92,35 @@ const skills = ['React', 'JavaScript', 'HTML/CSS', 'Next.js', 'Django', 'Wagtail
 		margin-top: 1.5rem;
 	}
 
-	section {
+	.about-section {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
 		color: var(--gray-200);
 	}
 
-	.section-title {
+	.about-section__title {
 		grid-column-start: 1;
 		font-size: var(--text-xl);
 		color: var(--gray-0);
 	}
 
-	.content {
+	.about-section__content {
 		grid-column: 2 / 4;
 	}
 	
-	.content p {
+	.about-section__content p {
 		margin-bottom: 12px;
 	}
 
-	.content :global(a) {
+	.about-section__content :global(a) {
 		text-decoration: 1px solid underline transparent;
 		text-underline-offset: 0.25em;
 		transition: text-decoration-color var(--theme-transition);
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
+	.about-section__content :global(a:hover),
+	.about-section__content :global(a:focus) {
 		text-decoration-color: currentColor;
 	}
 
@@ -137,7 +134,7 @@ const skills = ['React', 'JavaScript', 'HTML/CSS', 'Next.js', 'Django', 'Wagtail
 			grid-column-start: 2;
 		}
 
-		section {
+		.about-section {
 			display: contents;
 			font-size: var(--text-lg);
 		}

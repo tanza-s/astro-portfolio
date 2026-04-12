@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ContactCTA from '../components/ContactCTA.astro';
-import Grid from '../components/Grid.astro';
+import Feed from '../components/Feed.astro';
 import Hero from '../components/Hero.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -22,15 +22,15 @@ const projects = (await getCollection('work')).sort(
 				tagline="Selected case studies and recent work"
 				align="start"
 			/>
-			<Grid variant="offset">
+			<Feed variant="offset">
 				{
 					projects.map((project) => (
-						<li>
+						<li class="project-feed__item">
 							<PortfolioPreview project={project} />
 						</li>
 					))
 				}
-			</Grid>
+			</Feed>
 		</main>
 		<ContactCTA />
 	</div>

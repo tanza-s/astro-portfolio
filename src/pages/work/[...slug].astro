@@ -117,10 +117,9 @@ const { Content } = await render(entry);
   }
 
   .content :global(img) {
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    background: var(--gradient-subtle);
-    border: 1px solid var(--gray-800);
+    box-shadow: none;
+    background: transparent;
+    border: 2px solid var(--gray-700);
   }
 
   .content :global(blockquote) {
@@ -137,7 +136,6 @@ const { Content } = await render(entry);
   .content :global(a) {
     font-size: 1.5em;
     padding: 0 0.5em;
-    border-radius: 999rem;
     text-decoration: 1px solid underline transparent;
     text-underline-offset: 0.1em;
     transition: text-decoration-color var(--theme-transition);
@@ -175,7 +173,7 @@ const { Content } = await render(entry);
     aspect-ratio: 5 / 4;
     object-fit: cover;
     object-position: top;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
+    border: 2px solid var(--gray-700);
+    box-shadow: none;
   }
 </style>
